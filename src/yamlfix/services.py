@@ -117,9 +117,9 @@ def _ruamel_yaml_fixer(source_code: str) -> str:
     yaml = ruyaml.main.YAML()
     yaml.indent(mapping=2, sequence=4, offset=2)
     yaml.allow_duplicate_keys = True
-    # Start the document with ---
+    # Don't start the document with ---
     # ignore: variable has type None, what can we do, it doesn't have type hints...
-    yaml.explicit_start = True  # type: ignore
+    yaml.explicit_start = False  # type: ignore
     yaml.width = 80  # type: ignore
     source_dicts = yaml.load_all(source_code)
 
