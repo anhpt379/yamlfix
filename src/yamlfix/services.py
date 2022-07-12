@@ -88,7 +88,7 @@ def fix_code(source_code: str) -> str:
 
     fixers = [
         _fix_truthy_strings,
-        _fix_comments,
+        # _fix_comments,
         _fix_jinja_variables,
         _ruamel_yaml_fixer,
         _restore_truthy_strings,
