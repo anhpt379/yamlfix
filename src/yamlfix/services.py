@@ -121,6 +121,7 @@ def _ruamel_yaml_fixer(source_code: str) -> str:
     # ignore: variable has type None, what can we do, it doesn't have type hints...
     yaml.explicit_start = False  # type: ignore
     yaml.width = float('inf')  # type: ignore
+    yaml.version = (1, 1)
     source_dicts = yaml.load_all(source_code)
 
     # Return the output to a string
