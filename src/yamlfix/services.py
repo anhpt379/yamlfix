@@ -129,6 +129,11 @@ def _ruamel_yaml_fixer(source_code: str) -> str:
     for source_dict in source_dicts:
         yaml.dump(source_dict, string_stream)
         source_code = string_stream.getvalue()
+
+        if yaml.explicit_start is False:
+            # Remove `%YAML 1.1\n---` at the beginning of the document if
+            # people want `explicit_start = False`
+            source_code = source_code.split('\n', 2)[-1]
     string_stream.close()
 
     return source_code.strip()
